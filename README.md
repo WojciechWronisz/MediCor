@@ -68,3 +68,18 @@ cd frontend && npm install && npm run dev
 ```
 
 Frontend deweloperski: [http://localhost:5173](http://localhost:5173) (proxy `/api` → `:5001`).
+
+## Vercel (landing)
+
+Strona na Vercelu działa **bez backendu**. Nie ustawiaj `VITE_API_URL` — wtedy frontend nie woła `/api/*` (unikamy 404 i problemów z „broken HTTPS”).
+
+Root projektu: `vercel.json` buduje `frontend/` i serwuje `frontend/dist`.
+
+Jeśli później podłączysz zewnętrzne API z ważnym SSL:
+
+```bash
+# w Vercel → Settings → Environment Variables
+VITE_API_URL=https://twoj-backend.example.com/api
+```
+
+Docker lokalnie nadal ustawia `VITE_API_URL=/api` w `frontend/Dockerfile` (nginx → backend).

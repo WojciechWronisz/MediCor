@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { API_BASE } from '../api';
+import { API_ENABLED, fetchJson } from '../api';
 import './Doctors.css';
 
 interface Doctor {
@@ -22,16 +22,18 @@ const Doctors: React.FC = () => {
   const [doctor, setDoctor] = useState<Doctor>(LEKARZ_DOMOWY);
 
   useEffect(() => {
-    fetch(`${API_BASE}/doctors`)
-      .then((res) => res.json())
-      .then((data: Doctor[]) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setDoctor(data[0]);
-        }
-      })
-      .catch(() => {
-        /* używamy danych domyślnych */
-      });
+    if (!API_ENABLED) return;
+
+    let cancelled = false;
+    fetchJson<Doctor[]>('/doctors').then((data) => {
+      if (!cancelled && Array.isArray(data) && data.length > 0) {
+        setDoctor(data[0]);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

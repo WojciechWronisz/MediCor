@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { API_BASE } from '../api';
+import { API_ENABLED, fetchJson } from '../api';
 import './Services.css';
 
 interface Service {
@@ -44,17 +44,20 @@ const Services: React.FC = () => {
   const [services, setServices] = useState<Service[]>(USLUGI_AWARYJNE);
 
   useEffect(() => {
-    fetch(`${API_BASE}/services`)
-      .then((res) => res.json())
-      .then((data: Service[]) => {
-        if (Array.isArray(data) && data.length > 0) setServices(data);
-      })
-      .catch(() => {
-        /* używamy listy awaryjnej */
-      });
+    if (!API_ENABLED) return;
+
+    let cancelled = false;
+    fetchJson<Service[]>('/services').then((data) => {
+      if (!cancelled && Array.isArray(data) && data.length > 0) {
+        setServices(data);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  // Ikony usług na podstawie identyfikatora z API
   const renderIcon = (iconName: string) => {
     switch (iconName) {
       case 'heart-pulse':
