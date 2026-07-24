@@ -1,0 +1,294 @@
+.appointments {
+  padding: 8rem 0;
+  background: linear-gradient(to bottom, var(--bg-pristine), #ffffff);
+}
+
+.appointment-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.appointment-info h2 {
+  font-size: 2.8rem;
+  color: var(--primary-deep);
+  margin-bottom: 1.5rem;
+}
+
+.appointment-info h2 span {
+  color: var(--secondary-teal);
+}
+
+.appointment-info p {
+  font-size: 1.1rem;
+  color: var(--primary-soft);
+  margin-bottom: 2.5rem;
+}
+
+.contact-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.detail {
+  padding: 1rem;
+  background: var(--accent-light);
+  border-radius: 10px;
+  color: var(--primary-deep);
+  font-size: 0.95rem;
+}
+
+.appointment-form {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(26, 58, 95, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--primary-deep);
+  font-size: 0.9rem;
+}
+
+.form-group input, 
+.form-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+  outline: none;
+  border-color: var(--secondary-teal);
+  box-shadow: 0 0 0 3px rgba(77, 182, 172, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.visit-type-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  padding: 0.35rem;
+  background: var(--accent-light);
+  border-radius: 12px;
+}
+
+.visit-type-toggle button {
+  border: none;
+  background: transparent;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary-soft);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.visit-type-toggle button.active {
+  background: #ffffff;
+  color: var(--primary-deep);
+  box-shadow: 0 4px 12px rgba(26, 58, 95, 0.1);
+}
+
+.nfz-fields {
+  margin-bottom: 0.5rem;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(135deg, #e8f5f4 0%, #f0f7ff 100%);
+  border-radius: 12px;
+  border: 1px solid #c5e8e4;
+}
+
+.nfz-hint {
+  font-size: 0.85rem;
+  color: var(--primary-soft);
+  margin-bottom: 1rem;
+  line-height: 1.45;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.time-slot {
+  padding: 0.65rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-deep);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.time-slot:hover:not(:disabled) {
+  border-color: var(--secondary-teal);
+  color: var(--secondary-teal);
+}
+
+.time-slot.active {
+  background: var(--secondary-teal);
+  border-color: var(--secondary-teal);
+  color: #ffffff;
+}
+
+.time-slot:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.no-slots {
+  grid-column: 1 / -1;
+  color: var(--primary-soft);
+  font-size: 0.95rem;
+  margin: 0.25rem 0 0;
+}
+
+.btn-block:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.booking-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+}
+
+.btn-block {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.status-msg {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.status-msg.success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-msg.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 58, 95, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 1000;
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: #d1fae5;
+  color: #065f46;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.modal-card h3 {
+  color: var(--primary-deep);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.modal-lead {
+  color: var(--primary-soft);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.modal-summary {
+  text-align: left;
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-summary li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.92rem;
+}
+
+.modal-summary li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modal-summary span {
+  color: var(--primary-soft);
+}
+
+.modal-summary strong {
+  color: var(--primary-deep);
+  text-align: right;
+}
+
+@media (max-width: 968px) {
+  .appointment-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .appointment-info { text-align: center; }
+  .appointment-form { padding: 2rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .time-slots { grid-template-columns: repeat(3, 1fr); }
+}

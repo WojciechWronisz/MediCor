@@ -1,0 +1,79 @@
+.doctors {
+  padding: 6rem 0;
+  background: var(--bg-pristine);
+}
+
+.doctor-feature {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  align-items: stretch;
+  max-width: 860px;
+  margin: 0 auto;
+  background: var(--text-light);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e2e8f0;
+}
+
+.doctor-image-placeholder {
+  min-height: 280px;
+  background: #e8eef3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #d7e0e8;
+}
+
+.doctor-silhouette {
+  width: 120px;
+  height: 140px;
+  fill: #9aa8b5;
+  opacity: 0.85;
+}
+
+.doctor-info {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.doctor-info h3 {
+  color: var(--primary-deep);
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.specialty {
+  display: block;
+  color: var(--secondary-teal);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.experience {
+  font-size: 1.05rem;
+  color: var(--primary-soft);
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 768px) {
+  .doctor-feature {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .doctor-image-placeholder {
+    min-height: 200px;
+    border-right: none;
+    border-bottom: 1px solid #d7e0e8;
+  }
+
+  .doctor-info {
+    padding: 2rem;
+    align-items: center;
+  }
+}
