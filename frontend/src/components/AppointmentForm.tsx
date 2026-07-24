@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { API_BASE, API_ENABLED, fetchJson } from '../api';
+import { API_BASE } from '../api';
 import './AppointmentForm.css';
 
 interface Doctor {
@@ -86,15 +86,14 @@ const AppointmentForm: React.FC = () => {
   const [wolneGodziny, setWolneGodziny] = useState<string[]>(GODZINY_DOMYSLNE);
 
   useEffect(() => {
-    if (!API_ENABLED) return;
-
-    let cancelled = false;
-    fetchJson<Doctor[]>('/doctors').then((data) => {
-      if (!cancelled && Array.isArray(data) && data.length > 0) setDoctors(data);
-    });
-    return () => {
-      cancelled = true;
-    };
+    fetch(`${API_BASE}/doctors`)
+      .then((res) => res.json())
+      .then((data: Doctor[]) => {
+        if (Array.isArray(data) && data.length > 0) setDoctors(data);
+      })
+      .catch(() => {
+        /* używamy listy awaryjnej */
+      });
   }, []);
 
   useEffect(() => {
@@ -102,29 +101,18 @@ const AppointmentForm: React.FC = () => {
       setWolneGodziny(GODZINY_DOMYSLNE);
       return;
     }
-    if (!API_ENABLED) {
-      setWolneGodziny(GODZINY_DOMYSLNE);
-      return;
-    }
 
-    let cancelled = false;
-    fetchJson<{ slots?: string[] }>(
-      `/doctors/${formData.doctorId}/availability?date=${formData.date}`
-    ).then((data) => {
-      if (cancelled || !data) {
-        if (!cancelled) setWolneGodziny(GODZINY_DOMYSLNE);
-        return;
-      }
-      if (Array.isArray(data.slots)) {
-        setWolneGodziny(data.slots);
-        if (formData.time && !data.slots.includes(formData.time)) {
-          setFormData((prev) => ({ ...prev, time: '' }));
+    fetch(`${API_BASE}/doctors/${formData.doctorId}/availability?date=${formData.date}`)
+      .then((res) => res.json())
+      .then((data: { slots?: string[] }) => {
+        if (Array.isArray(data.slots)) {
+          setWolneGodziny(data.slots);
+          if (formData.time && !data.slots.includes(formData.time)) {
+            setFormData((prev) => ({ ...prev, time: '' }));
+          }
         }
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
+      })
+      .catch(() => setWolneGodziny(GODZINY_DOMYSLNE));
   }, [formData.doctorId, formData.date]);
 
   const specjalizacje = [...new Set(doctors.map((d) => d.specialty))];
@@ -161,11 +149,6 @@ const AppointmentForm: React.FC = () => {
 
     setWysylanie(true);
     try {
-      if (!API_ENABLED) {
-        setBlad('Rezerwacja online jest chwilowo niedostępna.');
-        return;
-      }
-
       const response = await fetch(`${API_BASE}/appointments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -181,12 +164,6 @@ const AppointmentForm: React.FC = () => {
           email: formData.patientEmail,
         }),
       });
-
-      const contentType = response.headers.get('content-type') ?? '';
-      if (!contentType.includes('application/json')) {
-        setBlad('Serwer API jest niedostępny. Spróbuj później.');
-        return;
-      }
 
       const data = await response.json();
       if (!response.ok) {

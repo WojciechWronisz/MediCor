@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { API_ENABLED, fetchJson } from '../api';
+import Reveal from './Reveal';
 import './Doctors.css';
 
 interface Doctor {
@@ -39,34 +40,38 @@ const Doctors: React.FC = () => {
   return (
     <section className="doctors" id="doctors">
       <div className="container">
-        <div className="section-header">
-          <h2>
-            Twój <span>Kardiolog</span>
-          </h2>
-          <p>Profesjonalna opieka kardiologiczna oparta na wieloletnim doświadczeniu klinicznym.</p>
-        </div>
+        <Reveal>
+          <div className="section-header">
+            <h2>
+              Twój <span>Kardiolog</span>
+            </h2>
+            <p>Profesjonalna opieka kardiologiczna oparta na wieloletnim doświadczeniu klinicznym.</p>
+          </div>
+        </Reveal>
 
-        <div className="doctor-feature">
-          <div className="doctor-image-placeholder" aria-hidden="true">
-            <svg
-              className="doctor-silhouette"
-              viewBox="0 0 120 140"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-            >
-              <circle cx="60" cy="36" r="24" />
-              <path d="M20 128c0-28 18-44 40-44s40 16 40 44v8H20v-8z" />
-            </svg>
+        <Reveal delayClass="delay-2">
+          <div className="doctor-feature">
+            <div className="doctor-image-placeholder" aria-hidden="true">
+              <svg
+                className="doctor-silhouette"
+                viewBox="0 0 120 140"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+              >
+                <circle cx="60" cy="36" r="24" />
+                <path d="M20 128c0-28 18-44 40-44s40 16 40 44v8H20v-8z" />
+              </svg>
+            </div>
+            <div className="doctor-info">
+              <h3>{doctor.name}</h3>
+              <span className="specialty">{doctor.specialty}</span>
+              <p className="experience">{doctor.bio}</p>
+              <a href="#contact" className="btn btn-primary">
+                Kontakt
+              </a>
+            </div>
           </div>
-          <div className="doctor-info">
-            <h3>{doctor.name}</h3>
-            <span className="specialty">{doctor.specialty}</span>
-            <p className="experience">{doctor.bio}</p>
-            <a href="#contact" className="btn btn-primary">
-              Kontakt
-            </a>
-          </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

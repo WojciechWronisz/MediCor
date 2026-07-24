@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { API_ENABLED, fetchJson } from '../api';
+import Reveal from './Reveal';
 import './Services.css';
 
 interface Service {
@@ -76,27 +77,31 @@ const Services: React.FC = () => {
   return (
     <section className="services" id="services">
       <div className="container">
-        <div className="section-header">
-          <h2>
-            Nasze Specjalistyczne <span>Usługi</span>
-          </h2>
-          <p>
-            Oferujemy kompleksową diagnostykę i profesjonalne leczenie chorób układu krążenia przy
-            użyciu nowoczesnego sprzętu medycznego.
-          </p>
-        </div>
+        <Reveal>
+          <div className="section-header">
+            <h2>
+              Nasze Specjalistyczne <span>Usługi</span>
+            </h2>
+            <p>
+              Oferujemy kompleksową diagnostykę i profesjonalne leczenie chorób układu krążenia przy
+              użyciu nowoczesnego sprzętu medycznego.
+            </p>
+          </div>
+        </Reveal>
         <div className="services-grid">
-          {services.map((service) => (
-            <div key={service.id} className="service-card">
-              <div className="service-icon-box">
-                <span className="icon">{renderIcon(service.icon)}</span>
+          {services.map((service, index) => (
+            <Reveal key={service.id} delayClass={`delay-${Math.min(index + 1, 4)}`}>
+              <div className="service-card">
+                <div className="service-icon-box">
+                  <span className="icon">{renderIcon(service.icon)}</span>
+                </div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <a href="#contact" className="learn-more">
+                  Dowiedz się więcej →
+                </a>
               </div>
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-              <a href="#contact" className="learn-more">
-                Dowiedz się więcej →
-              </a>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
