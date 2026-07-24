@@ -25,8 +25,13 @@ function App() {
             className="footer-logo"
           />
           <div className="footer-copy">
-            <p>&copy; 2026 MediCor — Przychodnia Kardiologiczna. Wszelkie prawa zastrzeżone.</p>
+            <p>&copy; 2026 MediCor — Poradnia Kardiologiczna. Wszelkie prawa zastrzeżone.</p>
             <p className="footer-address">ul. Traugutta 7, 11-400 Kętrzyn</p>
+            <p className="footer-contact">
+              Tel. <a href="tel:+48897522703">89 752 27 03</a>
+              {' · '}
+              E-mail: wkrótce
+            </p>
           </div>
         </div>
       </footer>

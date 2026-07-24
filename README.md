@@ -1,4 +1,4 @@
-# MediCor — Przychodnia Kardiologiczna
+# MediCor — Poradnia Kardiologiczna
 
 Strona medyczna z rezerwacją wizyt (Prywatna / NFZ), sekcją „Twój Kardiolog” oraz lokalizacją w Kętrzynie.
 
@@ -68,4 +68,3 @@ cd frontend && npm install && npm run dev
 ```
 
 Frontend deweloperski: [http://localhost:5173](http://localhost:5173) (proxy `/api` → `:5001`).
-# MediCor

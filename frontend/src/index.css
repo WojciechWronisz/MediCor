@@ -89,6 +89,17 @@ ul {
   font-size: 0.85rem;
 }
 
+.site-footer .footer-contact {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--primary-soft);
+}
+
+.site-footer .footer-contact a {
+  color: var(--secondary-teal);
+  font-weight: 600;
+}
+
 .section-header {
   text-align: center;
   margin-bottom: 3.5rem;

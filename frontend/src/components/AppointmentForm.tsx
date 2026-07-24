@@ -249,7 +249,7 @@ const AppointmentForm: React.FC = () => {
             {formData.visitType === 'nfz' && (
               <div className="nfz-fields">
                 <p className="nfz-hint">
-                  Wizyta NFZ — numer PESEL jest wymagany. Dane trafiają do systemu przychodni
+                  Wizyta NFZ — numer PESEL jest wymagany. Dane trafiają do systemu poradni
                   (bez zewnętrznej integracji z NFZ).
                 </p>
                 <div className="form-group">
@@ -412,7 +412,7 @@ const AppointmentForm: React.FC = () => {
             </div>
             <h3 id="modal-title">Wizyta zarezerwowana</h3>
             <p className="modal-lead">
-              Dziękujemy! Rezerwacja została zapisana w systemie przychodni.
+              Dziękujemy! Rezerwacja została zapisana w systemie poradni.
             </p>
             <ul className="modal-summary">
               {summary.id && (
