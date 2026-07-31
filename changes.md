@@ -257,6 +257,7 @@ Po kliknięciu **dowolnego miejsca** na którejkolwiek z 4 kart usług otwiera s
 
 ### Co zrobiono
 
+- Karty usług mają **równą wysokość**; CTA wyrównane do dołu karty.
 - Karty usług to teraz `<button class="service-card">` — cały obszar jest klikalny.
 - Modal z treścią: sekcje „Czym jest…”, „Jak wygląda…”, przygotowanie / co zabrać.
 - Zamknięcie: przycisk ×, „Zamknij”, klik w tło, klawisz Escape.
