@@ -342,4 +342,25 @@ Ulepszenie landingu pod UX (język, kontrast, CTA) oraz przygotowanie treściowy
 
 ---
 
-*Ostatnia aktualizacja: 1 sierpnia 2026 — typografia, i18n PL/EN/RU, dark mode, FAQ / pierwsza wizyta.*
+## 14. Osobny widok mobile (sierpień 2026)
+
+### Decyzja
+
+Nie „zwężamy” desktopu — poniżej **768px** renderujemy osobne drzewo komponentów z `frontend/src/mobile/`. Desktop zostaje w `desktop/DesktopApp.tsx` + `components/`.
+
+### Co zrobiono
+
+- Hook `useIsMobile` (`matchMedia`)
+- `App.tsx` przełącza `DesktopApp` | `MobileApp`
+- Mobile: hamburger drawer, hero 1-kolumnowy, listy usług/lekarz, bottom-sheet modale, kontakt + mapa 280px
+- Współdzielone: i18n, theme, treści, logo, PhoneCta, PageShimmer
+
+### Pliki
+
+- `frontend/src/hooks/useIsMobile.ts`
+- `frontend/src/desktop/DesktopApp.tsx`
+- `frontend/src/mobile/*`
+
+---
+
+*Ostatnia aktualizacja: 1 sierpnia 2026 — osobny widok mobile.*

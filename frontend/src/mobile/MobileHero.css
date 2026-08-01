@@ -1,0 +1,54 @@
+.m-hero {
+  position: relative;
+  padding: 2.25rem 1.25rem 2.75rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 70% at 100% 0%, var(--accent-soft), transparent 55%),
+    linear-gradient(180deg, var(--bg-pristine), var(--bg-section-alt));
+}
+
+.m-hero-brand {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.65rem;
+}
+
+.m-hero h1 {
+  font-size: clamp(1.85rem, 7vw, 2.25rem);
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 0.9rem;
+}
+
+.m-hero h1 span {
+  color: var(--accent);
+}
+
+.m-hero-sub {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 34rem;
+}
+
+.m-hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  position: relative;
+  z-index: 1;
+}
+
+.m-hero-accent {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  right: -70px;
+  bottom: -80px;
+  pointer-events: none;
+}

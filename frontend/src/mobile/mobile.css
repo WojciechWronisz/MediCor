@@ -1,0 +1,154 @@
+.m-app {
+  min-height: 100dvh;
+  background: var(--bg-pristine);
+  color: var(--text-primary);
+  padding-bottom: 5.5rem;
+}
+
+.m-section {
+  padding: 2.75rem 1.25rem;
+}
+
+.m-section-alt {
+  background: var(--bg-section-alt);
+}
+
+.m-section-surface {
+  background: var(--surface);
+}
+
+.m-header {
+  margin-bottom: 1.5rem;
+}
+
+.m-header h2 {
+  font-size: 1.65rem;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 0.55rem;
+}
+
+.m-header h2 span {
+  color: var(--accent);
+}
+
+.m-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.m-badge {
+  display: inline-flex;
+  margin-top: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+}
+
+.m-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.75rem 1.15rem;
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.m-btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  width: 100%;
+}
+
+.m-btn-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border);
+  width: 100%;
+}
+
+.m-btn-secondary:hover,
+.m-btn-secondary:active {
+  border-color: var(--accent-border);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.m-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(15, 23, 32, 0.65);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+
+.m-modal {
+  position: relative;
+  width: 100%;
+  max-height: 88dvh;
+  overflow-y: auto;
+  background: var(--surface);
+  border-radius: 20px 20px 0 0;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  padding: 1.35rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
+}
+
+.m-modal-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.85rem;
+  border: none;
+  background: transparent;
+  font-size: 1.85rem;
+  line-height: 1;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.25rem 0.45rem;
+}
+
+.m-modal h3 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+}
+
+.m-modal-section {
+  margin-bottom: 1.15rem;
+}
+
+.m-modal-section h4 {
+  color: var(--accent);
+  font-size: 1rem;
+  margin-bottom: 0.45rem;
+}
+
+.m-modal-section p,
+.m-modal-section li {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.m-modal-section ul {
+  list-style: disc;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}

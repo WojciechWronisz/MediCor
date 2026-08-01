@@ -1,0 +1,36 @@
+.m-footer {
+  padding: 2rem 1.25rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+}
+
+.m-footer-logo {
+  height: 48px;
+  width: auto;
+  margin: 0 auto 1rem;
+  display: block;
+  object-fit: contain;
+}
+
+.m-footer p {
+  font-size: 0.88rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.m-footer-muted {
+  margin-top: 0.4rem !important;
+  opacity: 0.8;
+  font-size: 0.82rem !important;
+}
+
+.m-footer-contact {
+  margin-top: 0.45rem !important;
+}
+
+.m-footer-contact a {
+  color: var(--accent);
+  font-weight: 600;
+}

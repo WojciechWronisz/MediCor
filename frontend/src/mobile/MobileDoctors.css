@@ -1,0 +1,76 @@
+.m-doctor-card {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.m-doctor-card:active {
+  border-color: var(--accent-border);
+  background: var(--surface-hover);
+}
+
+.m-doctor-avatar {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: var(--bg-section-alt);
+  display: grid;
+  place-items: center;
+}
+
+.m-doctor-avatar svg {
+  width: 42px;
+  height: 48px;
+  fill: var(--text-secondary);
+  opacity: 0.55;
+}
+
+.m-doctor-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.m-doctor-info h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.m-doctor-spec {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.m-doctor-info p,
+.m-doctor-bio {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.m-doctor-info em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.m-doctor-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+}
