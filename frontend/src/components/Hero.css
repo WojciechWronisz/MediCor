@@ -1,48 +1,75 @@
 .hero {
-  padding: 8rem 0;
-  background: linear-gradient(135deg, var(--bg-pristine) 0%, #edf2f7 100%);
+  padding: 7rem 0 8rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 20%, var(--accent-soft), transparent 55%),
+    linear-gradient(160deg, var(--bg-pristine) 0%, var(--bg-section-alt) 100%);
   overflow: hidden;
 }
 
 .hero-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-  gap: 4rem;
+  gap: 3.5rem;
+}
+
+.hero-brand {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.85rem;
 }
 
 .hero-text h1 {
-  font-size: 3.5rem;
-  line-height: 1.1;
-  color: var(--primary-deep);
-  margin-bottom: 1.5rem;
+  font-size: clamp(2.2rem, 4.5vw, 3.35rem);
+  line-height: 1.12;
+  color: var(--text-primary);
+  margin-bottom: 1.35rem;
 }
 
 .hero-text h1 span {
-  color: var(--secondary-teal);
+  color: var(--accent);
 }
 
-.hero-text p {
-  font-size: 1.2rem;
-  color: var(--primary-soft);
+.hero-text > p:not(.hero-brand) {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
-  max-width: 500px;
+  max-width: 520px;
+  line-height: 1.65;
 }
 
 .hero-btns {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--primary-soft);
-  border: 2px solid var(--primary-soft);
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border);
 }
 
 .btn-secondary:hover {
-  background-color: var(--primary-soft);
-  color: var(--text-light);
+  border-color: var(--accent-border);
+  color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: none;
+  padding-inline: 0.85rem;
+}
+
+.btn-ghost:hover {
+  color: var(--accent-hover);
+  transform: translateY(-1px);
 }
 
 .hero-visual {
@@ -52,33 +79,45 @@
 }
 
 .heart-card {
-  background: var(--text-light);
+  background: var(--surface);
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 40px rgba(26, 58, 95, 0.06);
   width: 280px;
   position: relative;
   z-index: 2;
-  animation: float 6s ease-in-out infinite;
+  animation: float 7s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
 }
 
 .heart-icon {
-  font-size: 3rem;
-  color: #e74c3c;
+  font-size: 2.75rem;
+  color: #c45b5b;
   margin-bottom: 1rem;
 }
 
 .pulse-line {
   height: 40px;
-  background: repeating-linear-gradient(90deg, transparent, transparent 10px, var(--secondary-teal) 10px, var(--secondary-teal) 12px);
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 10px,
+    var(--accent) 10px,
+    var(--accent) 12px
+  );
   margin-bottom: 1rem;
   border-radius: 4px;
-  opacity: 0.3;
+  opacity: 0.28;
 }
 
 .stat-grid {
@@ -90,19 +129,21 @@
 .stat span {
   display: block;
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
+  opacity: 0.85;
 }
 
 .stat strong {
-  font-size: 1.2rem;
-  color: var(--primary-deep);
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  font-family: var(--font-display);
 }
 
 .accent-circle {
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: var(--accent-light);
+  width: 380px;
+  height: 380px;
+  background: var(--accent-soft);
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -110,13 +151,27 @@
   z-index: 1;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .heart-card {
+    animation: none;
+  }
+}
+
 @media (max-width: 968px) {
   .hero-content {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  .hero-text h1 { font-size: 2.5rem; }
-  .hero-text p { margin: 0 auto 2rem; }
-  .hero-btns { justify-content: center; }
-  .hero-visual { margin-top: 4rem; }
+
+  .hero-text > p:not(.hero-brand) {
+    margin: 0 auto 2rem;
+  }
+
+  .hero-btns {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    margin-top: 2.5rem;
+  }
 }

@@ -312,4 +312,34 @@ Przygotowanie mechaniki przed dostarczeniem finalnych treści — spójny UX z s
 
 ---
 
-*Ostatnia aktualizacja: 31 lipca 2026 — popupy usług + przygotowanie popupu lekarzy.*
+---
+
+## 13. Typografia, i18n, dark mode, FAQ / pierwsza wizyta (sierpień 2026)
+
+### Co zrobiono
+
+- **Logo w dark mode:** PNG z białym tłem → wersja przezroczysta (`medicor-logo.png`) + wariant jasnego tekstu (`medicor-logo-dark.png`); nav/footer przełączają wg motywu. Oryginał: `medicor-logo-original.png`.
+- **Typografia:** Source Serif 4 (nagłówki) + DM Sans (treść) — wcześniej Fraunces/Manrope, zamienione na spokojniejszy zestaw.
+- **Smooth scroll** (`html { scroll-behavior: smooth }`).
+- **Lżejsze hovere** (delikatny lift / zmiana obramowania, bez dużych cieni).
+- **Shimmer** przy starcie strony (`PageShimmer`).
+- **Sticky CTA telefon** z microcopy „Umów wizytę telefonicznie”.
+- **Sekcja „Jak wygląda pierwsza wizyta”** — 3 spójne punkty + badge „Wkrótce dostępne”.
+- **Sekcja FAQ** — placeholdery + badge „W budowie”.
+- **Dark mode** — przełącznik w nav, zapis w `localStorage`, `data-theme`.
+- **Języki PL / EN / RU** — pełne słowniki + przełącznik w nav.
+
+### Pliki kluczowe
+
+- `frontend/src/i18n/translations.ts`, `I18nContext.tsx`
+- `frontend/src/theme/ThemeContext.tsx`
+- `frontend/src/components/{FirstVisit,Faq,PhoneCta,PageShimmer}.*`
+- `frontend/src/index.css`, `index.html`, komponenty sekcji + Navbar
+
+### Dlaczego
+
+Ulepszenie landingu pod UX (język, kontrast, CTA) oraz przygotowanie treściowych sekcji przed finalną redakcją.
+
+---
+
+*Ostatnia aktualizacja: 1 sierpnia 2026 — typografia, i18n PL/EN/RU, dark mode, FAQ / pierwsza wizyta.*

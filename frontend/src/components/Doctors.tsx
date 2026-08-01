@@ -1,89 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { API_ENABLED, fetchJson } from '../api';
+import { useEffect, useState } from 'react';
 import Reveal from './Reveal';
+import { useI18n } from '../i18n/I18nContext';
 import './Doctors.css';
 
-interface DoctorSection {
-  heading: string;
-  paragraphs?: string[];
-  list?: string[];
-}
-
-interface Doctor {
-  id: string;
-  name: string;
-  specialty: string;
-  bio: string;
-  experienceYears?: number;
-  /** Pełny opis w popupie — uzupełnić, gdy będą gotowe treści */
-  details: DoctorSection[];
-}
-
-const LEKARZ_DOMOWY: Doctor = {
-  id: '1',
-  name: 'lek. spec. Krzysztof Wronisz',
-  specialty: 'Internista 2. stopnia / Spec. Kardiologia',
-  bio: '30 lat doświadczenia w zawodzie',
-  experienceYears: 30,
-  details: [
-    {
-      heading: 'O lekarzu',
-      paragraphs: [
-        // TODO: wkleić finalny biogram
-        'Szczegółowy opis profilu lekarza pojawi się wkrótce.',
-      ],
-    },
-    {
-      heading: 'Wykształcenie i specjalizacje',
-      list: [
-        // TODO: uzupełnić listę
-        'Internista 2. stopnia',
-        'Specjalizacja: kardiologia',
-        'Pozostałe pozycje — w przygotowaniu',
-      ],
-    },
-    {
-      heading: 'Doświadczenie zawodowe',
-      paragraphs: [
-        // TODO: uzupełnić historię / miejsca pracy
-        'Ponad 30 lat doświadczenia w zawodzie. Pełniejszy opis doświadczenia zostanie dodany w kolejnej aktualizacji treści.',
-      ],
-    },
-    {
-      heading: 'Zakres opieki',
-      list: [
-        // TODO: doprecyzować zakres
-        'Konsultacje kardiologiczne',
-        'Diagnostyka chorób układu krążenia',
-        'Indywidualny plan dalszego postępowania',
-      ],
-    },
-  ],
-};
-
-const Doctors: React.FC = () => {
-  const [doctor, setDoctor] = useState<Doctor>(LEKARZ_DOMOWY);
+export default function Doctors() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (!API_ENABLED) return;
-
-    let cancelled = false;
-    fetchJson<Omit<Doctor, 'details'>[]>('/doctors').then((data) => {
-      if (!cancelled && Array.isArray(data) && data.length > 0) {
-        const fromApi = data[0];
-        setDoctor((prev) => ({
-          ...prev,
-          ...fromApi,
-          details: prev.details,
-        }));
-      }
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const doctor = t.doctor;
 
   useEffect(() => {
     if (!open) return;
@@ -105,12 +28,9 @@ const Doctors: React.FC = () => {
         <Reveal>
           <div className="section-header">
             <h2>
-              Twój <span>Kardiolog</span>
+              {doctor.title} <span>{doctor.titleAccent}</span>
             </h2>
-            <p>
-              Profesjonalna opieka kardiologiczna oparta na wieloletnim doświadczeniu klinicznym.
-              Kliknij kartę, aby zobaczyć więcej informacji.
-            </p>
+            <p>{doctor.subtitle}</p>
           </div>
         </Reveal>
 
@@ -136,7 +56,7 @@ const Doctors: React.FC = () => {
               <h3>{doctor.name}</h3>
               <span className="specialty">{doctor.specialty}</span>
               <p className="experience">{doctor.bio}</p>
-              <span className="doctor-more">Dowiedz się więcej →</span>
+              <span className="doctor-more">{doctor.learnMore}</span>
             </div>
           </button>
         </Reveal>
@@ -159,7 +79,7 @@ const Doctors: React.FC = () => {
               type="button"
               className="doctor-modal-close"
               onClick={() => setOpen(false)}
-              aria-label="Zamknij"
+              aria-label={doctor.close}
             >
               ×
             </button>
@@ -197,15 +117,11 @@ const Doctors: React.FC = () => {
             </div>
 
             <div className="doctor-modal-actions">
-              <a
-                href="#contact"
-                className="btn btn-primary"
-                onClick={() => setOpen(false)}
-              >
-                Przejdź do kontaktu
+              <a href="#contact" className="btn btn-primary" onClick={() => setOpen(false)}>
+                {doctor.goContact}
               </a>
               <button type="button" className="btn btn-secondary" onClick={() => setOpen(false)}>
-                Zamknij
+                {doctor.close}
               </button>
             </div>
           </div>
@@ -213,6 +129,4 @@ const Doctors: React.FC = () => {
       )}
     </section>
   );
-};
-
-export default Doctors;
+}

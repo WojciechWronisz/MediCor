@@ -1,17 +1,19 @@
-import React from 'react';
 import Reveal from './Reveal';
+import { useI18n } from '../i18n/I18nContext';
 import './Contact.css';
 
-const Contact: React.FC = () => {
+export default function Contact() {
+  const { t } = useI18n();
+
   return (
     <section className="contact" id="contact">
       <div className="container">
         <Reveal>
           <div className="section-header">
             <h2>
-              Lokalizacja i <span>kontakt</span>
+              {t.contact.title} <span>{t.contact.titleAccent}</span>
             </h2>
-            <p>Zapraszamy do naszej placówki w centrum Kętrzyna. Jesteśmy do Państwa dyspozycji.</p>
+            <p>{t.contact.subtitle}</p>
           </div>
         </Reveal>
 
@@ -19,7 +21,7 @@ const Contact: React.FC = () => {
           <Reveal delayClass="delay-1">
             <div className="contact-info-panel">
               <div className="contact-block">
-                <h3>Adres placówki</h3>
+                <h3>{t.contact.addressTitle}</h3>
                 <p>
                   ul. Traugutta 7
                   <br />
@@ -28,29 +30,29 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="contact-block">
-                <h3>Godziny otwarcia</h3>
+                <h3>{t.contact.hoursTitle}</h3>
                 <ul className="hours-list">
                   <li>
-                    <span>Poniedziałek</span>
+                    <span>{t.contact.mon}</span>
                     <strong>13:00 – 18:00</strong>
                   </li>
                   <li>
-                    <span>Wtorek – Czwartek</span>
+                    <span>{t.contact.tueThu}</span>
                     <strong>8:00 – 13:00</strong>
                   </li>
                   <li>
-                    <span>Piątek – Niedziela</span>
-                    <strong>zamknięte</strong>
+                    <span>{t.contact.friSun}</span>
+                    <strong>{t.contact.closed}</strong>
                   </li>
                 </ul>
               </div>
 
               <div className="contact-block">
-                <h3>Dane kontaktowe</h3>
+                <h3>{t.contact.contactTitle}</h3>
                 <p>
-                  Telefon: <a href="tel:+48897522703">89 752 27 03</a>
+                  {t.contact.phone}: <a href="tel:+48897522703">89 752 27 03</a>
                   <br />
-                  E-mail: wkrótce
+                  {t.contact.email}: {t.contact.emailSoon}
                 </p>
               </div>
             </div>
@@ -71,6 +73,4 @@ const Contact: React.FC = () => {
       </div>
     </section>
   );
-};
-
-export default Contact;
+}

@@ -10,11 +10,10 @@
   align-items: stretch;
   max-width: 860px;
   margin: 0 auto;
-  background: var(--text-light);
+  background: var(--surface);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   width: 100%;
   padding: 0;
   font: inherit;
@@ -25,29 +24,30 @@
 }
 
 .doctor-feature:hover {
-  box-shadow: 0 16px 36px rgba(26, 58, 95, 0.08);
-  border-color: var(--secondary-teal);
+  transform: translateY(-2px);
+  border-color: var(--accent-border);
+  background: var(--surface-hover);
 }
 
 .doctor-feature:focus-visible {
-  outline: 2px solid var(--secondary-teal);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
 .doctor-image-placeholder {
   min-height: 280px;
-  background: #e8eef3;
+  background: var(--bg-section-alt);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid #d7e0e8;
+  border-right: 1px solid var(--border);
 }
 
 .doctor-silhouette {
   width: 120px;
   height: 140px;
-  fill: #9aa8b5;
-  opacity: 0.85;
+  fill: var(--text-secondary);
+  opacity: 0.55;
 }
 
 .doctor-info {
@@ -58,14 +58,14 @@
 }
 
 .doctor-info h3 {
-  color: var(--primary-deep);
+  color: var(--text-primary);
   font-size: 1.75rem;
   margin-bottom: 0.75rem;
 }
 
 .specialty {
   display: block;
-  color: var(--secondary-teal);
+  color: var(--accent);
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -73,12 +73,12 @@
 
 .experience {
   font-size: 1.05rem;
-  color: var(--primary-soft);
+  color: var(--text-secondary);
   margin-bottom: 1.75rem;
 }
 
 .doctor-more {
-  color: var(--secondary-teal);
+  color: var(--accent);
   font-weight: 600;
   font-size: 0.95rem;
 }
@@ -125,14 +125,15 @@
 
 .doctor-modal {
   position: relative;
-  background: #ffffff;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 20px;
   max-width: 640px;
   width: 100%;
   max-height: min(88vh, 820px);
   overflow-y: auto;
   padding: 2rem 2rem 1.75rem;
-  box-shadow: 0 30px 60px rgba(26, 58, 95, 0.2);
+  box-shadow: 0 30px 60px rgba(15, 23, 32, 0.25);
   animation: doctor-modal-up 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -177,7 +178,7 @@
   width: 88px;
   height: 88px;
   border-radius: 16px;
-  background: #e8eef3;
+  background: var(--bg-section-alt);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,11 +187,12 @@
 .doctor-modal-avatar svg {
   width: 52px;
   height: 60px;
-  fill: #9aa8b5;
+  fill: var(--text-secondary);
+  opacity: 0.55;
 }
 
 .doctor-modal-header h3 {
-  color: var(--primary-deep);
+  color: var(--text-primary);
   font-size: 1.45rem;
   margin-bottom: 0.35rem;
 }
@@ -208,13 +210,13 @@
 }
 
 .doctor-modal-section h4 {
-  color: var(--secondary-teal);
+  color: var(--accent);
   font-size: 1.05rem;
   margin-bottom: 0.55rem;
 }
 
 .doctor-modal-section p {
-  color: var(--primary-soft);
+  color: var(--text-secondary);
   font-size: 0.98rem;
   line-height: 1.65;
 }
@@ -228,7 +230,7 @@
 }
 
 .doctor-modal-section li {
-  color: var(--primary-soft);
+  color: var(--text-secondary);
   font-size: 0.98rem;
   line-height: 1.55;
 }
