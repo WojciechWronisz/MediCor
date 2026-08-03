@@ -5,9 +5,13 @@ import type { ServiceCopy } from '../i18n/translations';
 import './Services.css';
 
 export default function Services() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [active, setActive] = useState<ServiceCopy | null>(null);
   const services = t.services.items;
+
+  useEffect(() => {
+    setActive(null);
+  }, [lang]);
 
   useEffect(() => {
     if (!active) return;

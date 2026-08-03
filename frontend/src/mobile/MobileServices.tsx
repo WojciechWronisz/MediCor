@@ -19,8 +19,12 @@ function renderIcon(iconName: string) {
 }
 
 export default function MobileServices() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [active, setActive] = useState<ServiceCopy | null>(null);
+
+  useEffect(() => {
+    setActive(null);
+  }, [lang]);
 
   useEffect(() => {
     if (!active) return;

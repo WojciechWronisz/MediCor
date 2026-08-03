@@ -363,4 +363,23 @@ Nie „zwężamy” desktopu — poniżej **768px** renderujemy osobne drzewo ko
 
 ---
 
-*Ostatnia aktualizacja: 1 sierpnia 2026 — osobny widok mobile.*
+## 15. Poprawka tłumaczeń RU (sierpień 2026)
+
+### Problem
+
+Wersja rosyjska bywała „niedotłumaczona” (skrócone końcówki, uproszczony styl zamiast pełnej, oficjalnej formy medycznej) albo UI zostawiał stare treści po zmianie języka (otwarty modal).
+
+### Co zrobiono
+
+- Pełniejsze, bardziej oficjalne teksty RU w `translations.ts` (m.in. «заболеваний сердечно-сосудистой системы», karty usług, lekarz, FAQ, kontakt).
+- Reset modali usług/lekarza przy zmianie `lang` (desktop + mobile).
+
+### Pliki
+
+- `frontend/src/i18n/translations.ts`
+- `frontend/src/components/{Services,Doctors}.tsx`
+- `frontend/src/mobile/{MobileServices,MobileDoctors}.tsx`
+
+---
+
+*Ostatnia aktualizacja: 3 sierpnia 2026 — poprawka tłumaczeń RU.*

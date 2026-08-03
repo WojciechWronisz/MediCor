@@ -3,9 +3,13 @@ import { useI18n } from '../i18n/I18nContext';
 import './MobileDoctors.css';
 
 export default function MobileDoctors() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [open, setOpen] = useState(false);
   const doctor = t.doctor;
+
+  useEffect(() => {
+    setOpen(false);
+  }, [lang]);
 
   useEffect(() => {
     if (!open) return;
